@@ -1,0 +1,17 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div id="menu">
+    <div class="pure-menu">
+        <a class="pure-menu-heading" href="/HSDerby/index.jsp">Derby</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/discount_code/input" class="pure-menu-link">Discount Code</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/micro_market/input" class="pure-menu-link">Micro Market</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/customer/input" class="pure-menu-link">Customer</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/product_code/input" class="pure-menu-link">Product Code</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/manufacturer/input" class="pure-menu-link">Manufacturer</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/product/input" class="pure-menu-link">Product</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/purchase_order/input" class="pure-menu-link">PurchaseOrder</a></li>
+        </ul>
+    </div>
+</div>
