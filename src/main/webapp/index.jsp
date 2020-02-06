@@ -2,7 +2,6 @@
 <!doctype html>
 <html>
     <head>
-        <title>HS Derby</title>
         <!-- head -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
     </head>
