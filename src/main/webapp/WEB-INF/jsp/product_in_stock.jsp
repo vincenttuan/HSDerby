@@ -17,29 +17,34 @@
             function drawBasic() {
 
                 var data = google.visualization.arrayToDataTable([
-                    ['City', '2010 Population', ],
-                    ['New York City, NY', 8175000],
-                    ['Los Angeles, CA', 3792000],
-                    ['Chicago, IL', 2695000],
-                    ['Houston, TX', 2099000],
-                    ['Philadelphia, PA', 1526000]
+                    ['商品', '數量', ],
+                    ['面膜', 200],
+                    ['酒精', 100],
+                    ['口罩', 250]
                 ]);
 
                 var options = {
-                    title: 'Population of Largest U.S. Cities',
+                    title: 'HS 庫存資料',
                     chartArea: {width: '50%'},
                     hAxis: {
-                        title: 'Total Population',
+                        title: '總數量',
                         minValue: 0
                     },
                     vAxis: {
-                        title: 'City'
-                    }
+                        title: '商品'
+                    },
+                    is3D: true
                 };
-
-                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-                chart.draw(data, options);
+                // BarChart, ColumnChart, PieChart, LineChart
+                var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
+                chart1.draw(data, options);
+                var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+                chart2.draw(data, options);
+                var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+                chart3.draw(data, options);
+                var chart4 = new google.visualization.LineChart(document.getElementById('chart_div4'));
+                chart4.draw(data, options);
+                
             }
         </script>
     </head>
@@ -61,7 +66,18 @@
                 <td valign="top">
                     <div class="content">
                        <!-- 統計圖表位置 --> 
-                       <div id="chart_div"></div>
+                       <table>
+                           <tr>
+                               <td><div id="chart_div1"></div></td>
+                               <td><div id="chart_div2"></div></td>
+                           </tr>
+                           <tr>
+                               <td><div id="chart_div3"></div></td>
+                               <td><div id="chart_div4"></div></td>
+                           </tr>
+                       </table>
+                       
+                       
                     </div>
                 </td>
             </table>
