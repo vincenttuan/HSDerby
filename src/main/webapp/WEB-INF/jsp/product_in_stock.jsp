@@ -11,16 +11,16 @@
         <%@ include file="include/head.jspf"  %>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
-            google.charts.load('current', {packages: ['corechart', 'bar']});
+            google.charts.load('current', {packages: ['corechart', 'gauge']});
             google.charts.setOnLoadCallback(drawBasic);
 
             function drawBasic() {
 
                 var data = google.visualization.arrayToDataTable([
                     ['商品', '數量', ],
-                    ['面膜', 200],
-                    ['酒精', 100],
-                    ['口罩', 250]
+                    ['面膜', 80],
+                    ['酒精', 50],
+                    ['口罩', 90]
                 ]);
 
                 var options = {
@@ -33,7 +33,13 @@
                     vAxis: {
                         title: '商品'
                     },
-                    is3D: true
+                    
+                    is3D: true,
+                    
+                    width: 400, height: 120,
+                    redFrom: 90, redTo: 100,
+                    yellowFrom: 75, yellowTo: 90,
+                    minorTicks: 5
                 };
                 // BarChart, ColumnChart, PieChart, LineChart
                 var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
@@ -44,7 +50,9 @@
                 chart3.draw(data, options);
                 var chart4 = new google.visualization.LineChart(document.getElementById('chart_div4'));
                 chart4.draw(data, options);
-                
+                var chart5 = new google.visualization.Gauge(document.getElementById('chart_div5'));
+                chart5.draw(data, options);
+
             }
         </script>
     </head>
@@ -65,19 +73,21 @@
             <table>
                 <td valign="top">
                     <div class="content">
-                       <!-- 統計圖表位置 --> 
-                       <table>
-                           <tr>
-                               <td><div id="chart_div1"></div></td>
-                               <td><div id="chart_div2"></div></td>
-                           </tr>
-                           <tr>
-                               <td><div id="chart_div3"></div></td>
-                               <td><div id="chart_div4"></div></td>
-                           </tr>
-                       </table>
-                       
-                       
+                        <!-- 統計圖表位置 --> 
+                        <table>
+                            <tr>
+                                <td><div id="chart_div1"></div></td>
+                                <td><div id="chart_div2"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div id="chart_div3"></div></td>
+                                <td><div id="chart_div4"></div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div id="chart_div5"></div></td>
+                            </tr>
+                        </table>
+
                     </div>
                 </td>
             </table>
