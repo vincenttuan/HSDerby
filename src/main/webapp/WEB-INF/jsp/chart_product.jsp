@@ -36,7 +36,7 @@
                     is3D: true
                 };
                 // BarChart, ColumnChart, PieChart, LineChart
-                var chart1 = new google.visualization.BarChart(document.getElementById('chart_div1'));
+                var chart1 = new google.visualization.${chart}(document.getElementById('chart_div1'));
                 chart1.draw(data, options);
                 
             }
@@ -59,6 +59,10 @@
             <table>
                 <td valign="top">
                     <div class="content">
+                        <a href="/HSDerby/mvc/chart/product/quantity/BarChart">BarChart</a> | 
+                        <a href="/HSDerby/mvc/chart/product/quantity/ColumnChart">ColumnChart</a> | 
+                        <a href="/HSDerby/mvc/chart/product/quantity/PieChart">PieChart</a> | 
+                        <a href="/HSDerby/mvc/chart/product/quantity/LineChart">LineChart</a>
                         
                         <div id="chart_div1" style="width: ${w}px;height: ${h}px"></div>
                         
