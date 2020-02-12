@@ -12,7 +12,7 @@
             <li class="pure-menu-item"><a href="/HSDerby/mvc/manufacturer/input" class="pure-menu-link">Manufacturer</a></li>
             <li class="pure-menu-item"><a href="/HSDerby/mvc/product/input" class="pure-menu-link">Product</a></li>
             <li class="pure-menu-item"><a href="/HSDerby/mvc/purchase_order/input" class="pure-menu-link">PurchaseOrder</a></li>
-            <li class="pure-menu-item"><a href="/HSDerby/mvc/product_in_stock" class="pure-menu-link">Product in stock</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/chart_demo.jsp" class="pure-menu-link">Chart Demo</a></li>
         </ul>
     </div>
 </div>
