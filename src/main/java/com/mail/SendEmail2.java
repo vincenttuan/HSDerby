@@ -11,18 +11,33 @@
  */
 package com.mail;
 
+import java.io.File;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.Scanner;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-public class SendEmail {
+public class SendEmail2 {
 
     public static void main(String[] args) throws Exception {
+        File file = new File("src/main/java/com/mail/content.html");
+        String content = new Scanner(file).useDelimiter("\\A").next();
+        System.out.println(content);
+        
+        file = new File("src/main/java/com/mail/emails.txt");
+        String emails = new Scanner(file).useDelimiter("\\A").next();
+        System.out.println(emails);
+        
+        sendEmail(content, emails);
+        
+    }
+    
+    public static void sendEmail(String content, String emails) throws Exception {
         // Gmail 與 授權碼(非 Google 密碼)
         final String username = "vincenttuan@gmail.com";
         final String password = "bngqelfxvxkkqejo";
@@ -55,7 +70,7 @@ public class SendEmail {
         // 受文者
         message.setRecipients(
                 Message.RecipientType.TO,
-                InternetAddress.parse("vincenttuan@gmail.com, vincentjava@yahoo.com.tw")
+                InternetAddress.parse(emails)
         );
         
         // Email 抬頭
@@ -65,17 +80,12 @@ public class SendEmail {
         //message.setText("Dear Mail Crawler,\n\n Please do not spam my email!");
         
         // Email 內容 HTML
-        String content = "Dear 顧客您好,"
-                + "<p /><a href='https://hsunite.tw/'>HS 網址</a>"
-                + "<p /> Please do not spam my email!";
-        
         message.setContent(content, "text/html;charset=utf-8");
 
         // 發送 email
         Transport.send(message);
 
         System.out.println("信件發送成功 !");
-
     }
 
 }
