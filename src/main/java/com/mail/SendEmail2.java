@@ -26,7 +26,7 @@ public class SendEmail2 {
 
     public static void main(String[] args) throws Exception {
         File file = new File("src/main/java/com/mail/content.html");
-        String content = new Scanner(file).useDelimiter("\\A").next();
+        String content = new Scanner(file, "UTF-8").useDelimiter("\\A").next();
         System.out.println(content);
         
         file = new File("src/main/java/com/mail/emails.txt");
