@@ -2,6 +2,7 @@ package com.web.mvc.controller;
 
 import com.web.mvc.entity.Member;
 import com.web.mvc.repository.spec.LoginDao;
+import com.web.mvc.validator.MemberValidator;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -12,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,9 @@ public class LoginController {
     @Autowired
     LoginDao dao;
     
+    @Autowired
+    MemberValidator validator;
+    
     @RequestMapping("/input")
     public String input(Model model) {
         Member member = new Member();
@@ -31,8 +36,23 @@ public class LoginController {
         return "login";
     }
     
+    @RequestMapping("/in")
+    public String login(@ModelAttribute Member member) {
+        boolean check = dao.login(member.getUsername(), member.getPassword());
+        if(check)
+            return "index";
+        else
+            return "login";
+    }
+    
+    
     @RequestMapping("/save")
-    public String save(@ModelAttribute Member member) {
+    public String save(@ModelAttribute Member member, BindingResult result) {
+        validator.validate(member, result);
+        if(result.hasErrors()) {
+            return "login";
+        }
+        
         String code = Integer.toHexString(member.hashCode());
         member.setCode(code);
         member.setPriority(1);

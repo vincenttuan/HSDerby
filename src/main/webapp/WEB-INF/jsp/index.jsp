@@ -3,15 +3,15 @@
 <html>
     <head>
         <!-- head -->
-        <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
+        <%@include file="include/head.jspf"  %>
     </head>
     <body>
         <div id="layout">
             <!-- Menu toggle -->
-            <%@include file="/WEB-INF/jsp/include/toggle.jspf"  %>
+            <%@include file="include/toggle.jspf"  %>
 
             <!-- Menu -->
-            <%@include file="/WEB-INF/jsp/include/menu.jspf"  %>
+            <%@include file="include/menu.jspf"  %>
             
             <div id="main">
                 <div class="header">
@@ -19,11 +19,11 @@
                     <h2>Sample Tables</h2>
                 </div>
                 
-                <img src="images/derby.png">
+                <img src="/HSDerby/images/derby.png">
                 
             </div>
         </div>
         <!-- Foot -->
-        <%@include file="/WEB-INF/jsp/include/foot.jspf"  %>   
+        <%@include file="include/foot.jspf"  %>   
     </body>
 </html>

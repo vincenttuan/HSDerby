@@ -32,5 +32,12 @@ public class LoginDaoImpl implements LoginDao {
         int rowcount = jdbcTemplate.update(sql, true, new Date(), username, code);
         return rowcount >= 1 ? true : false;
     }
+
+    @Override
+    public boolean login(String username, String password) {
+        String sql = "SELECT * FROM MEMBER WHERE username=? AND password=?";
+        List list = jdbcTemplate.queryForList(sql, username, password);
+        return list.size() >= 1 ? true : false;
+    }
     
 }
