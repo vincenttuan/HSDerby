@@ -8,5 +8,13 @@ CREATE TABLE Member (
     passts timestamp, -- Email 通過驗證時間
     priority integer, -- 使用者權限
     ts timestamp default current_timestamp -- 建檔時間
-)
+);
+
+CREATE TABLE Photo (
+    id integer primary key generated always as identity, -- 主鍵
+    name varchar(50) not null, -- 照片名稱
+    base64 CLOB, -- 照片 base64 字串
+    ts timestamp default current_timestamp -- 建檔時間
+);
+
 
