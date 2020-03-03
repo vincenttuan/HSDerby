@@ -34,9 +34,14 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public boolean login(String username, String password) {
+    public boolean login(String username, String password, String base64) {
         String sql = "SELECT * FROM MEMBER WHERE username=? AND password=?";
         List list = jdbcTemplate.queryForList(sql, username, password);
+        // 照片存入
+        if(list.size() >= 1) {
+            sql = "UPDATE MEMBER SET base64=? WHERE username=?";
+            jdbcTemplate.update(sql, base64, username);
+        }
         return list.size() >= 1 ? true : false;
     }
     

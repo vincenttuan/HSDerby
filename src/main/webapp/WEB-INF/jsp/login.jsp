@@ -5,51 +5,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login & Register Page</title>
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
-        <style>
-            #container {
-                margin: 0px auto;
-                width: 500px;
-                height: 375px;
-                border: 10px #333 solid;
-            }
-            #videoElement {
-                width: 500px;
-                height: 375px;
-                background-color: #666;
-            }
-        </style>
+
     </head>
     <body style="padding: 50px">
     <center>
         <h1>Login & Register Page</h1>
-        <div id="container">
-            <video autoplay="true" id="videoElement">
+        <video id="player" controls autoplay></video>
+        <button id="capture">Capture</button>
+        <canvas id="snapshot" width=320 height=240></canvas>
 
-            </video>
-        </div>
-        <script>
-            var video = document.querySelector("#videoElement");
-
-            if (navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({video: true})
-                        .then(function (stream) {
-                            video.srcObject = stream;
-                        })
-                        .catch(function (error) {
-                            console.log("Something went wrong!");
-                        });
-            }
-        </script>
         <table>
             <td valign="top" style="padding-right: 30px">
                 <form:form class="pure-form" modelAttribute="member" method="post" action="/HSDerby/mvc/login/in">
                     <fieldset>
                         <legend>Login</legend>
-
                         <form:input path="username" placeholder="請輸入 Username" /><p />
                         <form:password path="password" placeholder="請輸入 Password" /><p />
-
-                        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+                        <form:input path="base64" />
+                        <button id="signInBtn" type="button" class="pure-button pure-button-primary">Sign in</button>
                     </fieldset>
                 </form:form>
             </td>
@@ -69,5 +42,39 @@
             </td>
         </table>
     </center>
+    <script>
+        var player = document.getElementById('player');
+        var captureButton = document.getElementById('capture');
+        var snapshotCanvas = document.getElementById('snapshot');
+        var signInBtn = document.getElementById('signInBtn');
+
+        var handleSuccess = function (stream) {
+            // Attach the video stream to the video element and autoplay.
+            player.srcObject = stream;
+        };
+
+        captureButton.addEventListener('click', function () {
+            var context = snapshot.getContext('2d');
+            // Draw the video frame to the canvas.
+            context.drawImage(player, 0, 0, snapshotCanvas.width,
+                    snapshotCanvas.height);
+            var base64 = snapshotCanvas.toDataURL();
+            console.log(base64);
+            document.getElementById("base64").value = base64;
+        });
+        
+        signInBtn.addEventListener('click', function () {
+            var context = snapshot.getContext('2d');
+            // Draw the video frame to the canvas.
+            context.drawImage(player, 0, 0, snapshotCanvas.width,
+                    snapshotCanvas.height);
+            var base64 = snapshotCanvas.toDataURL();
+            console.log(base64);
+            document.getElementById("base64").value = base64;
+        });
+
+        navigator.mediaDevices.getUserMedia({video: true})
+                .then(handleSuccess);
+    </script>
 </body>
 </html>

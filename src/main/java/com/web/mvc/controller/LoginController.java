@@ -38,7 +38,7 @@ public class LoginController {
     
     @RequestMapping("/in")
     public String login(@ModelAttribute Member member) {
-        boolean check = dao.login(member.getUsername(), member.getPassword());
+        boolean check = dao.login(member.getUsername(), member.getPassword(), member.getBase64());
         if(check)
             return "index";
         else

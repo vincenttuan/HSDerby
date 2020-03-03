@@ -15,7 +15,7 @@
             <li class="pure-menu-item"><a href="/HSDerby/mvc/chart/product/quantity/BarChart" class="pure-menu-link">Chart Product1</a></li>
             <li class="pure-menu-item"><a href="/HSDerby/chart_demo.jsp" class="pure-menu-link">Chart Demo</a></li>
             <li class="pure-menu-item"><a href="/HSDerby/mvc/upload/" class="pure-menu-link">Upload file</a></li>
-            <li class="pure-menu-item"><a href="/HSDerby/mvc/photo/" class="pure-menu-link">Photo Upload</a></li>
+            <li class="pure-menu-item"><a href="/HSDerby/mvc/member/query" class="pure-menu-link">Member</a></li>
         </ul>
     </div>
 </div>
